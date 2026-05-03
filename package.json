@@ -1,0 +1,29 @@
+{
+  "name": "react-nmt",
+  "version": "1.0.0",
+  "description": "learning React",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashmankar1/React.git"
+  },
+  "keywords": [],
+  "author": "Yash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yashmankar1/React/issues"
+  },
+  "homepage": "https://github.com/yashmankar1/React#readme",
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "browserslist": [
+    "last 2 version"
+  ]
+}
