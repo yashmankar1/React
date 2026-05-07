@@ -103,3 +103,9 @@ body {
   gap: 16px;
   padding: 4px;
 }
+
+
+.filter-button{
+  margin: 10px;
+  cursor: pointer;
+}
