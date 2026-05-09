@@ -1,24 +1,15 @@
 import { CDN_URL, LOGO_URL } from "../utils/constants";
 
 const RestaurantCard = ({ resData }) => {
-  const {
-    cloudinaryImageId,
-    name,
-    avgRating,
-    cuisines,
-    costForTwo,
-    deliveryTime,
-  } = resData?.data;
+  const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, sla } =
+    resData?.info;
 
   return (
     <div className="res-card">
       <img
-        className="res-logo"
+        className="rounded-lg"
         alt="res-logo"
         src={CDN_URL + cloudinaryImageId}
-        onError={(event) => {
-          event.currentTarget.src = LOGO_URL;
-        }}
       />
 
       <div className="res-details">
@@ -28,10 +19,10 @@ const RestaurantCard = ({ resData }) => {
 
         <div className="res-meta">
           <span>{avgRating}</span>
-          <span>{deliveryTime}</span>
+          <span>{sla?.deliveryTime} mins</span>
         </div>
 
-        <p className="price">{costForTwo / 100}</p>
+        <p className="price">{costForTwo}</p>
       </div>
     </div>
   );
