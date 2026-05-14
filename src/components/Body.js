@@ -2,6 +2,8 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { RESTAURANT_API } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRes, setListOfRes] = useState([]);
@@ -10,6 +12,8 @@ const Body = () => {
 
   const [searchText, setSearchText] = useState("");
 
+  const onlineStatus = useOnlineStatus();
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -17,9 +21,7 @@ const Body = () => {
   console.log("RERENDER");
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.52110&lng=73.85020&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
-    );
+    const data = await fetch(RESTAURANT_API);
 
     const json = await data.json();
 
@@ -37,6 +39,9 @@ const Body = () => {
         [],
     );
   };
+
+  if (onlineStatus === false)
+    return <h1>Please check your internet connection</h1>;
 
   if (listOfRes.length === 0) {
     return <Shimmer />;
