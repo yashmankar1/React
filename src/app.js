@@ -14,7 +14,7 @@ const Grocery = lazy(() => import("./components/Grocery.js"));
 
 const AppLayout = () => {
   return (
-    <div className="app">
+    <div className="min-h-screen bg-gray-50">
       <Header />
       <Outlet />
     </div>

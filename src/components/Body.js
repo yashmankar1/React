@@ -48,19 +48,20 @@ const Body = () => {
   }
 
   return (
-    <div className="body">
-      <div className="filter">
-        <div className="search">
+    <div className="p-8 bg-white min-h-screen">
+      <div className="flex gap-4 mb-8">
+        <div className="flex gap-2">
           <input
             type="text"
-            className="search-box"
+            className="border-2 border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:border-orange-500"
+            placeholder="Search restaurants..."
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
-            className="search-btn"
+            className="bg-blue-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-500 transition cursor-pointer"
             onClick={() => {
               const filteredRestauranr = listOfRes.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase()),
@@ -68,11 +69,11 @@ const Body = () => {
               setFilteredRestaurent(filteredRestauranr);
             }}
           >
-            search
+            Search
           </button>
         </div>
         <button
-          className="filter-btn"
+          className="bg-green-400 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition cursor-pointer"
           onClick={() => {
             const filteredList = listOfRes.filter(
               (res) => res.info.avgRating > 4,
@@ -81,11 +82,11 @@ const Body = () => {
             setListOfRes(filteredList);
           }}
         >
-          Top Rated Restaurant
+          Top Rated Restaurants
         </button>
       </div>
 
-      <div className="res-container">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredRestaurent
           ?.filter((restaurant) => restaurant?.info?.id)
           ?.map((restaurant) => (

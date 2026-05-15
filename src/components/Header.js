@@ -9,27 +9,32 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+    <div className="flex justify-between items-center bg-gray-100 shadow-lg p-4">
+      <div className="w-40">
+        <img className="h-16 object-contain rounded-full" src={LOGO_URL} />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>online Status: {onlineStatus ? "🟢" : "🔴"}</li>
-          <Link to="/">
+      <div>
+        <ul className="flex gap-6 items-center">
+          <li className="text-sm font-medium">
+            Status: {onlineStatus ? "🟢" : "🔴"}
+          </li>
+          <Link to="/" className="hover:text-orange-500">
             <li>Home</li>
           </Link>
           <li>
-            <Link to="/about">About us</Link>
+            <Link to="/about" className="hover:text-orange-500">
+              About us
+            </Link>
           </li>
-          <Link to="/contactus">
-            {" "}
-            <li>Conatct us</li>
+          <Link to="/contactus" className="hover:text-orange-500">
+            <li>Contact us</li>
           </Link>
-          <Link to="/grocery">Grocery</Link>
-          <li>Cart</li>
+          <Link to="/grocery" className="hover:text-orange-500">
+            Grocery
+          </Link>
+          <li className="hover:text-orange-500">Cart</li>
           <button
-            className="login"
+            className="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-600 transition cursor-pointer"
             onClick={() => {
               btnNameReact === "Login"
                 ? setBtnNameReact("Logout")
