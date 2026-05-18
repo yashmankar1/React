@@ -1,8 +1,15 @@
 import { CDN_URL, LOGO_URL } from "../utils/constants";
 
 const RestaurantCard = ({ resData }) => {
-  const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, sla } =
-    resData?.info;
+  const {
+    cloudinaryImageId,
+    name,
+    avgRating,
+    cuisines,
+    costForTwo,
+    promoted,
+    sla,
+  } = resData?.info;
 
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition transform hover:scale-105 cursor-pointer">
@@ -32,4 +39,16 @@ const RestaurantCard = ({ resData }) => {
   );
 };
 
+export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-lg ">
+          Promoted
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
 export default RestaurantCard;
