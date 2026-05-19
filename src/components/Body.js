@@ -1,9 +1,10 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext, use } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { RESTAURANT_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext.js";
 
 const Body = () => {
   const [listOfRes, setListOfRes] = useState([]);
@@ -47,6 +48,8 @@ const Body = () => {
       ),
     );
   };
+
+  const { loggedInUser, setUserName } = useContext(userContext);
 
   if (onlineStatus === false)
     return <h1>Please check your internet connection</h1>;
@@ -92,6 +95,16 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        <div>
+          <label className="px-2">UserName: </label>
+          <input
+            className="border-2 border-gray-300 px-4 py-2 rounded-lg"
+            value={loggedInUser}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
