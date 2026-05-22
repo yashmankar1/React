@@ -63,7 +63,7 @@ const Body = () => {
       <div className="flex gap-4 mb-8">
         <div className="flex gap-2">
           <input
-            type="text"
+            type="text" data-testid="searchInput"
             className="border-2 border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:border-orange-500"
             placeholder="Search restaurants..."
             value={searchText}

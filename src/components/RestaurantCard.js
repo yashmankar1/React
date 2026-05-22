@@ -1,6 +1,7 @@
 import { CDN_URL, LOGO_URL } from "../utils/constants";
 
 const RestaurantCard = ({ resData }) => {
+
   const {
     cloudinaryImageId,
     name,
@@ -12,7 +13,8 @@ const RestaurantCard = ({ resData }) => {
   } = resData?.info;
 
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition transform hover:scale-105 cursor-pointer">
+    <div data-testid="resCard"
+    className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition transform hover:scale-105 cursor-pointer">
       <img
         className="w-full h-48 object-cover rounded-lg"
         alt="res-logo"
